@@ -387,6 +387,7 @@
     .checked__searchBar {
         background: none;
         width: 90%;
+        margin-top: 10px;
     }
     .title__checked__searchBar {
         -webkit-text-stroke: 1px #fe1936;
@@ -394,5 +395,24 @@
         font-size: 16px;
         font-weight: 500;
         margin-right: 10px;
+    }
+    .check__info__searchBar {
+        align-items: center;
+        color: #fff;
+        display: flex;
+        height: 50px;
+        justify-content: center;
+        width: 90%;
+        flex-direction: column;
+    }
+    .filter__searchBar {
+        background: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        margin-top: 40px;
     }
 }

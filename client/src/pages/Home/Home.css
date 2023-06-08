@@ -117,3 +117,35 @@
         margin-top: 360px;
     }
 }
+@media (max-width:360px){
+    .container__title__home {
+        align-items: center;
+        display: flex;
+        height: 50%;
+        justify-content: center;
+        top: 200%;
+        width: 100%;
+    }
+    .title__home {
+        position: absolute;
+        -webkit-text-stroke: 1px #fe1936;
+        color: #fff;
+        font-size: 1.3rem;
+        margin-left: 10px;
+        /* width: 100%; */
+        width: 90%;
+        text-align: center;
+        top: -50px;
+    }
+    .pagination {
+        align-items: center;
+        color: #fff;
+        display: flex;
+        margin-top: 120px;
+        padding: 30px 0;
+        width: -webkit-max-content;
+        width: max-content;
+        position: absolute;
+        left: 45px;
+    }
+}
