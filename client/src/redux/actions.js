@@ -21,7 +21,7 @@ import {
 
 export function getPokemons() {
 	return async function (dispatch) {
-		let response = await axios.get("http://localhost:3001/pokemons");
+		let response = await axios.get("/pokemons");
 		return dispatch({
 			type: GET_POKEMONS,
 			payload: response.data,
@@ -39,7 +39,7 @@ export const globalFilter =(filter)=>{
 export const getPokemonById = (id) => {
 	return async (dispatch) => {
 		try {
-			const response = await axios.get(` http://localhost:3001/pokemons/${id}`);
+			const response = await axios.get(` /pokemons/${id}`);
 			//console.log(response.data);
 			return dispatch({
 				type: GET_POKEMON_BY_ID,
@@ -89,9 +89,9 @@ export function resetFilters() {
 export const getName = (name) => {
     return async (dispatch) => {
         try {
-			//http://localhost:3001/pokemons/name?name=pikachu
-			//http://localhost:3001/pokemons/name?name=${name}
-			const { data } = await axios.get(`http://localhost:3001/pokemons/name?name=${name}`);
+			///pokemons/name?name=pikachu
+			///pokemons/name?name=${name}
+			const { data } = await axios.get(`/pokemons/name?name=${name}`);
             dispatch({type: GET_NAME, payload: data })
         } catch (error) {
            return console.log('Probando')
@@ -107,7 +107,7 @@ export const backToHome =()=>{
 
 export function getTypes() {
 	return async function (dispatch) {
-		const response = await axios.get("http://localhost:3001/types");
+		const response = await axios.get("/types");
 		return dispatch({
 			type: GET_TYPES,
 			payload: response.data,
@@ -126,7 +126,7 @@ export function postPokemon(payload) {
 	return async function (dispatch) {
 		try {
 			const response = await axios.post(
-				"http://localhost:3001/pokemons/",
+				"/pokemons/",
 				payload
 			);
 			return dispatch({
@@ -143,7 +143,7 @@ export function postPokemon(payload) {
 export function getDetail(id) {
 	return async function (dispatch) {
 		try {
-			let json = await axios.get(`http://localhost:3001/pokemons/${id}`);
+			let json = await axios.get(`/pokemons/${id}`);
 			return dispatch({
 				type: GET_DETAILS,
 				payload: json.data,
@@ -159,7 +159,7 @@ export function searchPokemon(search) {
 		return alert("The name must only contain letters.");
 	  }
 	  await axios
-		.get(`http://localhost:3001/pokemons/name?name=${search}`)
+		.get(`/pokemons/name?name=${search}`)
 		.then((data) => {
 		  return dispatch({
 			type: SEARCH_POKEMON,
@@ -179,7 +179,7 @@ export const deletePokemon = (id) => {
 	return async (dispatch) => {
 		try {
 			const deleted = await axios.delete(
-				`http://localhost:3001/pokemons/${id}`
+				`/pokemons/${id}`
 			);
 			dispatch({
 				type: DELETE,

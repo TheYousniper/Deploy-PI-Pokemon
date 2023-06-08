@@ -9,6 +9,9 @@ import NotFound from "./components/NotFound/NotFound";
 import { useDispatch } from 'react-redux'
 import { useEffect } from "react";
 import { getPokemons, getTypes } from "./redux/actions";
+import axios from "axios";
+
+axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
   const location = useLocation()

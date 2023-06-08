@@ -22,7 +22,6 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const [pokePerPage, setPokePerPage] = useState(12);
   const [fromDetail, setFromDetail] = useState(false); // Estado para controlar si se navegó desde el detalle
-  const [isLoading, setIsLoading] = useState(true); // Estado para controlar la carga de datos
   const initialPoke = (page - 1) * pokePerPage;
   const finalPoke = page * pokePerPage;
   const maxPage = pokeRender && Math.ceil(pokeRender.length / pokePerPage);
@@ -42,15 +41,7 @@ const Home = () => {
     }
   }, [location.pathname]);
 
-  useEffect(() => {
-    // Simulación de carga de datos por 1 segundo
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
 
-    return () => clearTimeout(timeout); // Limpiar el timeout si el componente se desmonta
-
-  }, []);
 
   if (filterApiDb.all) {
     if (pokeFilterByTypes.state) {
@@ -97,10 +88,6 @@ const Home = () => {
           Welcome, Here you can find your favorite Pokemon
         </h2>
       </div>
-      {isLoading ? (
-        <div className="loading">Loading...</div>
-      ) : (
-        <>
           {showPagination ? (
             <Pagination page={page} maxPage={maxPage} setPage={setPage} />
           ) : (
@@ -115,8 +102,11 @@ const Home = () => {
               <Card poke={pokemonsByName.data} />
             )}
           </div>
-        </>
-      )}
+          {showPagination ? (
+            <Pagination page={page} maxPage={maxPage} setPage={setPage} />
+          ) : (
+            <div className="pagination__placeholder" />
+          )}
     </div>
   );
 };
